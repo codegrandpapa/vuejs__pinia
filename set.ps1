@@ -13,6 +13,15 @@ foreach ($date in $dateData) {
     }
 
     $commitDate = "${date}T12:00:00"
+
+    $env:GIT_AUTHOR_DATE = $commitDate
+    $env:GIT_COMMITTER_DATE = $commitDate
+
+    git add -- contribution.txt
+    git commit -m "Commit on $commitDate"
+
+    Remove-Item Env:\GIT_AUTHOR_DATE
+    Remove-Item Env:\GIT_COMMITTER_DATE
     $commitCount = Get-Random -Minimum 1 -Maximum 5
     for ($i = 1; $i -le $commitCount; $i++) {
         
