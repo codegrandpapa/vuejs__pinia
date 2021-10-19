@@ -12,7 +12,7 @@ foreach ($date in $dateData) {
         continue
     }
 
-    $commitDate = "${date}T12:00:00"
+    $commitDate = "${date}"
     $commitCount = Get-Random -Minimum 1 -Maximum 9
     for ($i = 1; $i -le $commitCount; $i++) {
         Write-Host "Processing commit for date: $commitDate"
