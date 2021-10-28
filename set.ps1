@@ -12,10 +12,10 @@ foreach ($date in $dateData) {
         continue
     }
 
-    $commitDate = "${date}"
-    $commitCount = Get-Random -Minimum 1 -Maximum 9
+    $commitDate = "${date}T12:00:00"
+    $commitCount = Get-Random -Minimum 1 -Maximum 5
     for ($i = 1; $i -le $commitCount; $i++) {
-        Write-Host "Processing commit for date: $commitDate"
+        
 
         
         $step = Get-Random -Minimum 1 -Maximum 7
@@ -30,8 +30,9 @@ foreach ($date in $dateData) {
         git commit -m "Commit on $commitDate" --date="$commitDate"
     }
     # Push changes
+    Write-Host "pushing ---- $commitDate"
     git push
-
+    Write-Host "------------"
     # Check push result
     if ($LASTEXITCODE -eq 0) {
 
